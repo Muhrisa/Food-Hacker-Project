@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Tab Navigation Template",
-    "slug": "FoodHackerProject_part2",
+    "slug": "FoodHackerProject",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [

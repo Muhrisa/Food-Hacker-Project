@@ -1,8 +1,14 @@
 import * as React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {NavigationContainer } from '@react-navigation/native';
+import {createStackNavigator } from '@react-navigation/stack';
+import {createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
+
+import LoginScreen from '../screens/LoginScreen';
+import EmailInputScreen from '../screens/EmailInputScreen';
+import PasswordInputScreen from '../screens/PasswordInputScreen';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -19,16 +25,24 @@ export default function BottomTabNavigator({ navigation, route }) {
         name="Home"
         component={HomeScreen}
         options={{
-          title: 'Get Started',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-code-working" />,
+          title: 'Welcome',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-home" />,
         }}
       />
       <BottomTab.Screen
-        name="Links"
-        component={LinksScreen}
+        name="Get Started"
+        component={EmailInputScreen}
         options={{
-          title: 'Resources',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+          title: 'Register',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-book" />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{
+          title: 'Login',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-lock" />,
         }}
       />
     </BottomTab.Navigator>
@@ -40,8 +54,10 @@ function getHeaderTitle(route) {
 
   switch (routeName) {
     case 'Home':
-      return 'HELLOO';
-    case 'Links':
-      return 'Links to learn more';
+      return 'Welcome';
+    case 'Get Started':
+      return 'Register';
+    case 'Login':
+      return 'Login';
   }
 }

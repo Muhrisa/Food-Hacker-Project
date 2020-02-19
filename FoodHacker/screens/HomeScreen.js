@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {View, StyleSheet, ActivityIndicator, TouchableOpacity,} from 'react-native';
+import {Text, Icon, Image, Button} from 'react-native-elements';
+//import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import * as WebBrowser from 'expo-web-browser';
 
@@ -11,43 +13,44 @@ export default function HomeScreen() {
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
         <View style={styles.welcomeContainer}>
           <Image
-            source={
-              __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
-            }
+            source={require('../assets/images/food.png')}
             style={styles.welcomeImage}
           />
         </View>
 
         <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
-
-          <Text style={styles.getStartedText}>Open up the code for this screen:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
-          </View>
-
+          <Text h4> Welcome to Food Hacker</Text>
           <Text style={styles.getStartedText}>
-            Change any of the text, save the file, and your app will automatically reload.
+            CS 125 Project
           </Text>
         </View>
 
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
+        <View style={styles.contentView}>
+          <Button
+            onPress={() => console.log('GET STARTED!')}
+            title="Get started"
+            loading={false}
+            loadingProps={{size: 'small', color: 'white'}}
+            buttonStyle={{
+              backgroundColor: '#32a8a8',
+              borderRadius: 5,
+            }}
+            titleStyle={{fontWeight: 'bold', fontSize: 23}}
+            containerStyle={{marginVertical: 10, height: 50, width: 300}}
+            underlayColor="transparent"
+          />
+          <Text h4 style={{textAlign: 'center', color: 'grey'}}>
+            Already have an account?
+          </Text>
+          <TouchableOpacity
+            onPress={() => console.log('ALREADY HAVE AN ACCOUNT!')}>
+            <Text h4 style={{textAlign: 'center', color: 'red'}}>
+              Sign in
+            </Text>
           </TouchableOpacity>
         </View>
+
       </ScrollView>
-
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-        <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>navigation/BottomTabNavigator.js</MonoText>
-        </View>
-      </View>
     </View>
   );
 }
@@ -79,20 +82,10 @@ function DevelopmentModeNotice() {
   }
 }
 
-function handleLearnMorePress() {
-  WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/workflow/development-mode/');
-}
-
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/get-started/create-a-new-app/#making-your-first-change'
-  );
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F4F6FA',
   },
   developmentModeText: {
     marginBottom: 20,
@@ -103,6 +96,11 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingTop: 30,
+  },
+  contentView: {
+    marginTop: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   welcomeContainer: {
     alignItems: 'center',
@@ -168,12 +166,5 @@ const styles = StyleSheet.create({
   helpContainer: {
     marginTop: 15,
     alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
   },
 });
