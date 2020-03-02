@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, ActivityIndicator, TouchableOpacity, KeyboardAvoidingView, ScrollView,} from 'react-native';
+import {View, StyleSheet, Alert, ActivityIndicator, TouchableOpacity, KeyboardAvoidingView, ScrollView,} from 'react-native';
 
 import {BoxPasswordStrengthDisplay} from 'react-native-password-strength-meter';
 import {Text, Icon, Input, Button, SocialIcon} from 'react-native-elements';
@@ -71,7 +71,7 @@ export class PasswordInputScreen extends Component {
               titleStyle={{fontWeight: 'bold', fontSize: 23}}
               containerStyle={{marginVertical: 10, height: 50, width: 300}}
               //onPress={() => this.props.navigation.navigate('TouchAuthentication')}
-              onPress={() => console.log('REGISTERED PASSWORD!')}
+              onPress={() => Alert.alert('REGISTERED PASSWORD!')}
               underlayColor="transparent"
             />
           </View>

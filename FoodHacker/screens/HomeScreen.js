@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {View, StyleSheet, ActivityIndicator, TouchableOpacity,} from 'react-native';
+import {View, StyleSheet, ActivityIndicator, Alert, Navigation, TouchableOpacity,} from 'react-native';
 import {Text, Icon, Image, Button} from 'react-native-elements';
-//import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { ScrollView } from 'react-native-gesture-handler';
-import * as WebBrowser from 'expo-web-browser';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { MonoText } from '../components/StyledText';
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -27,7 +27,7 @@ export default function HomeScreen() {
 
         <View style={styles.contentView}>
           <Button
-            onPress={() => console.log('GET STARTED!')}
+            onPress={() => navigation.navigate('Get Started')}
             title="Get started"
             loading={false}
             loadingProps={{size: 'small', color: 'white'}}
@@ -43,7 +43,7 @@ export default function HomeScreen() {
             Already have an account?
           </Text>
           <TouchableOpacity
-            onPress={() => console.log('ALREADY HAVE AN ACCOUNT!')}>
+            onPress={() => navigation.navigate('Login')}>
             <Text h4 style={{textAlign: 'center', color: 'red'}}>
               Sign in
             </Text>

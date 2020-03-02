@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, KeyboardAvoidingView, ScrollView,} from 'react-native';
+import {View, StyleSheet, Alert, KeyboardAvoidingView, ScrollView,} from 'react-native';
 import {Text, Icon, Input, Button, SocialIcon} from 'react-native-elements';
 
 export class EmailInputScreen extends Component {
@@ -60,7 +60,7 @@ export class EmailInputScreen extends Component {
               }}
               titleStyle={{fontWeight: 'bold', fontSize: 23}}
               containerStyle={{marginVertical: 10, height: 50, width: 300}}
-              onPress={() => console.log('REGISTERED EMAIL!')}
+              onPress={() => Alert.alert('REGISTERED EMAIL!')}
               //onPress={() => this.props.navigation.navigate('PasswordInputScreen')}
               underlayColor="transparent"
             />

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, ActivityIndicator, TouchableOpacity, KeyboardAvoidingView, ScrollView,} from 'react-native';
+import {View, StyleSheet, Alert, ActivityIndicator, TouchableOpacity, KeyboardAvoidingView, ScrollView,} from 'react-native';
 import {Text, Icon, Input, Button, SocialIcon} from 'react-native-elements';
 
 export class LoginScreen extends Component {
@@ -74,7 +74,7 @@ export class LoginScreen extends Component {
             }}
             titleStyle={{fontWeight: 'bold', fontSize: 23}}
             containerStyle={{marginVertical: 10, height: 50, width: 300}}
-            onPress={() => console.log('LOGIN!')}
+            onPress={() => Alert.alert('LOGIN!')}
             underlayColor="transparent"
           />
         </View>
