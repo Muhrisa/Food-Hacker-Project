@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {NavigationContainer } from '@react-navigation/native';
-import {createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabBarIcon from '../components/TabBarIcon';
 
-import HomeScreen from '../screens/HomeScreen';
-import LoginScreen from '../screens/LoginScreen';
-import EmailInputScreen from '../screens/EmailInputScreen';
-import PasswordInputScreen from '../screens/PasswordInputScreen';
+import Home from '../screens/Home';
+import Login from '../screens/Login';
+import EmailInput from '../screens/EmailInput';
+import PasswordInput from '../screens/PasswordInput';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -22,7 +22,7 @@ export default function BottomTabNavigator({ navigation, route }) {
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
       <BottomTab.Screen
         name="Home"
-        component={HomeScreen}
+        component={Home}
         options={{
           title: 'Welcome',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-home" />,
@@ -30,7 +30,7 @@ export default function BottomTabNavigator({ navigation, route }) {
       />
       <BottomTab.Screen
         name="Get Started"
-        component={EmailInputScreen}
+        component={EmailInput}
         options={{
           title: 'Register',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-book" />,
@@ -38,7 +38,7 @@ export default function BottomTabNavigator({ navigation, route }) {
       />
       <BottomTab.Screen
         name="Login"
-        component={LoginScreen}
+        component={Login}
         options={{
           title: 'Login',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-lock" />,
@@ -53,8 +53,8 @@ function getHeaderTitle(route) {
 
   switch (routeName) {
     case 'Home':
-      return 'Welcome';
-    case 'Get Started':
+      return 'Home';
+    case 'Register':
       return 'Register';
     case 'Login':
       return 'Login';

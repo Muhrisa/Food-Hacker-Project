@@ -1,19 +1,11 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Alert, ActivityIndicator, TouchableOpacity, KeyboardAvoidingView, ScrollView,} from 'react-native';
-
-import {BoxPasswordStrengthDisplay} from 'react-native-password-strength-meter';
+import {View, StyleSheet, Alert, Navigation, KeyboardAvoidingView, ScrollView,} from 'react-native';
 import {Text, Icon, Input, Button, SocialIcon} from 'react-native-elements';
 
-export class PasswordInputScreen extends Component {
+export class EmailInput extends Component {
   static navigationOptions = {
-    headerTransparent: true,
-    headerTitle: '',
+    headerShown: false,
   };
-  state = {
-    password: '',
-  };
-
-  onChange = password => this.setState({password});
   render() {
     return (
       <KeyboardAvoidingView
@@ -25,42 +17,40 @@ export class PasswordInputScreen extends Component {
           style={styles.container}
           keyboardShouldPersistTaps="handled">
           <View style={styles.headerContainer}>
-            <Icon
-              name="ios-person-add"
-              size={80}
-              type="ionicon"
-              color={'#32a8a8'}
-            />
-            <Text h4 style={{textAlign: 'center'}}>Enter Password:</Text>
+            <Icon name= "ios-person-add" size={80} type="ionicon" color={'#32a8a8'} />
+            <Text h4 style={{textAlign: 'center'}}>Enter Email:</Text>
           </View>
           <Input
             leftIcon={
               <Icon
-                name="lock"
+                name="ios-mail"
+                type="ionicon"
                 color="rgba(50, 168, 168, 1)"
                 size={25}
               />
             }
-            placeholder="Email"
+            placeholder=" Email"
             inputContainerStyle={{
               borderWidth: 1,
               borderColor: 'white',
               borderLeftWidth: 0,
               height: 50,
               backgroundColor: 'white',
-              marginBottom: 20,
+              marginBottom: 80,
             }}
+            placeholderTextColor="grey"
             autoCapitalize="none"
-            placeholder="Password"
-            secureTextEntry={true}
             autoCorrect={false}
+            keyboardType="email-address"
             returnKeyType="next"
             ref={input => (this.email2Input = input)}
-            onChangeText={this.onChange}
+            onSubmitEditing={() => {
+              this.password2Input.focus();
+            }}
+
           />
-          <BoxPasswordStrengthDisplay password={this.state.password} />
           <View style={styles.btnWrapper}>
-            <Button
+             <Button
               title="Continue"
               loading={false}
               loadingProps={{size: 'small', color: 'white'}}
@@ -70,8 +60,7 @@ export class PasswordInputScreen extends Component {
               }}
               titleStyle={{fontWeight: 'bold', fontSize: 23}}
               containerStyle={{marginVertical: 10, height: 50, width: 300}}
-              //onPress={() => this.props.navigation.navigate('TouchAuthentication')}
-              onPress={() => Alert.alert('REGISTERED PASSWORD!')}
+              onPress={() => this.props.navigation.navigate('PasswordInput')}
               underlayColor="transparent"
             />
           </View>
@@ -123,4 +112,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export default PasswordInputScreen;
+export default EmailInput;
+

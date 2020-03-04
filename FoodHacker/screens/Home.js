@@ -1,13 +1,14 @@
 import * as React from 'react';
 import {View, StyleSheet, ActivityIndicator, Alert, Navigation, TouchableOpacity,} from 'react-native';
 import {Text, Icon, Image, Button} from 'react-native-elements';
+//import { NavigationContainer } from 'react-navigation-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator } from 'react-navigation-stack';
 
 import { MonoText } from '../components/StyledText';
 
-export default function HomeScreen({navigation}) {
+export default function Home({navigation}) {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -27,7 +28,7 @@ export default function HomeScreen({navigation}) {
 
         <View style={styles.contentView}>
           <Button
-            onPress={() => navigation.navigate('Get Started')}
+            onPress={() => navigation.navigate('EmailInput')}
             title="Get started"
             loading={false}
             loadingProps={{size: 'small', color: 'white'}}
@@ -55,8 +56,8 @@ export default function HomeScreen({navigation}) {
   );
 }
 
-HomeScreen.navigationOptions = {
-  header: null,
+Home.navigationOptions = {
+  headerShown: false,
 };
 
 function DevelopmentModeNotice() {

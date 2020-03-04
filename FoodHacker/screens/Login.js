@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View, StyleSheet, Alert, ActivityIndicator, TouchableOpacity, KeyboardAvoidingView, ScrollView,} from 'react-native';
 import {Text, Icon, Input, Button, SocialIcon} from 'react-native-elements';
 
-export class LoginScreen extends Component {
+export class Login extends Component {
   static navigationOptions = {
     headerShown: false,
   };
@@ -145,5 +145,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export default LoginScreen;
+export default Login;
 
