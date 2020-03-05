@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import firebase from "firebase";
 
 class App extends Component {
- 	componentWillMount(){
+ 	componentDidMount(){
   		var firebaseConfig = {
     	apiKey: "AIzaSyBvf0SfC3QmJoykCpuQVRk2jDshqn3B3qY",
     	authDomain: "foodhackerdb.firebaseapp.com",
@@ -19,11 +19,11 @@ class App extends Component {
     	firebase.initializeApp(firebaseConfig);
     	//firebase.analytics();
   		
-  		firebase.database().ref('users/001').set(
+  		firebase.database().ref('users/002').set(
                 {
-                    name: 'Roberto Ramirez 001',
+                    name: 'Marisa Roldan 001',
                     age: 21,
-                    comments: "gey"
+                    comments: "cool"
                 }
             )
     }	
