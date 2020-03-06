@@ -1,11 +1,44 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Alert, ActivityIndicator, TouchableOpacity, KeyboardAvoidingView, ScrollView,} from 'react-native';
 import {Text, Icon, Input, Button, SocialIcon} from 'react-native-elements';
+import firebase from 'firebase';
 
 export class Login extends Component {
   static navigationOptions = {
     headerShown: false,
   };
+  constructor(props){
+    super(props)
+
+    this.state = {
+      user_id: '',
+      email: '',
+      password: ''
+    }
+  }
+
+  _handlePress() {
+    this.state.user_id = this.state.email.replace(/[^\w\s]/gi, '');
+    firebase.database().ref('users/'+this.state.user_id).once("value", snapshot => {
+      if (snapshot.exists()){
+        if (snapshot.val().password == this.state.password){
+            Alert.alert('You logged in!');
+        }
+        else{
+          Alert.alert('Wrong Password');
+        }        
+        var email = snapshot.val().password;
+        console.log(email);
+      }
+      else{
+        Alert.alert('Email Doesnt exist :(');
+      }
+      
+    
+    });
+  }
+
+
   render() {
     return (
       <KeyboardAvoidingView
@@ -21,7 +54,8 @@ export class Login extends Component {
           </View>
 
           <View style={styles.wrapper}>
-		   <Input
+		   <Input placeholder="Email"
+         onChangeText = {(text) => this.setState({email:text})}
 		     leftIcon={
 		       <Icon
 		         name="email-outline"
@@ -30,7 +64,7 @@ export class Login extends Component {
 		         size={25}
 		       />
 		     }
-		     placeholder="Email"
+		     
 		     inputContainerStyle={styles.input}
 		     placeholderTextColor="grey"
 		     autoCapitalize="none"
@@ -38,7 +72,8 @@ export class Login extends Component {
 		     keyboardType="email-address"
 		     returnKeyType="next"
 		   />
-		   <Input
+		   <Input placeholder="Password"
+         onChangeText = {(text) => this.setState({password:text})}
 		     leftIcon={
 		       <Icon
 		         name="lock"
@@ -49,7 +84,7 @@ export class Login extends Component {
 		     }
 		     inputContainerStyle={styles.input}
 		     placeholderTextColor="grey"
-		     placeholder="Password"
+		     
 		     autoCapitalize="none"
 		     secureTextEntry={true}
 		     autoCorrect={false}
@@ -74,7 +109,7 @@ export class Login extends Component {
             }}
             titleStyle={{fontWeight: 'bold', fontSize: 23}}
             containerStyle={{marginVertical: 10, height: 50, width: 300}}
-            onPress={() => Alert.alert('LOGIN!')}
+            onPress={() => this._handlePress()}
             underlayColor="transparent"
           />
         </View>

@@ -6,26 +6,6 @@ import {BoxPasswordStrengthDisplay} from 'react-native-password-strength-meter';
 
 import firebase from "firebase";
 
-//
-// const user_id = uniqueId(); 
-// 
-//   .then(id => console.log(id))
-//   .catch(error => console.error(error));
-
-
-var firebaseConfig = {
-      apiKey: "AIzaSyBvf0SfC3QmJoykCpuQVRk2jDshqn3B3qY",
-      authDomain: "foodhackerdb.firebaseapp.com",
-      databaseURL: "https://foodhackerdb.firebaseio.com",
-      projectId: "foodhackerdb",
-      storageBucket: "foodhackerdb.appspot.com",
-      messagingSenderId: "610704435607",
-      appId: "1:610704435607:web:368119793451f3c8b33cd2",
-      measurementId: "G-FWPCPMYH6J"
-      };
-firebase.initializeApp(firebaseConfig);
-
-
 export class EmailInput extends Component {
 
   static navigationOptions = {
@@ -47,16 +27,8 @@ export class EmailInput extends Component {
   //}
 
   _handlePress() {
-    //this.setState({username:username})
-    //this.setState({email: email})
-    
-    // .then(id => this.setState(user_id:id))
-    // .catch(error => console.error(error));
-    this.state.user_id = this.state.email.replace(/[^\w\s]/gi, '');
 
-    //Alert.alert("Username value: "+this.state.first_name);
-    //Alert.alert("Email value: "+this.state.email);
-    //Alert.alert(uniqueId.uniqueId())
+    this.state.user_id = this.state.email.replace(/[^\w\s]/gi, '');
 
     firebase.database().ref('users/'+this.state.user_id).once("value", snapshot => {
       if (snapshot.exists()){
