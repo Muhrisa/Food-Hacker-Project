@@ -2,8 +2,16 @@ import React, {Component} from 'react';
 import {View, StyleSheet, Alert, Navigation, KeyboardAvoidingView, ScrollView,} from 'react-native';
 import {Text, Icon, Input, Button, SocialIcon} from 'react-native-elements';
 import {BoxPasswordStrengthDisplay} from 'react-native-password-strength-meter';
+// import nextId from "react-id-generator";
 
 import firebase from "firebase";
+
+//
+// const user_id = uniqueId(); 
+// 
+//   .then(id => console.log(id))
+//   .catch(error => console.error(error));
+
 
 var firebaseConfig = {
       apiKey: "AIzaSyBvf0SfC3QmJoykCpuQVRk2jDshqn3B3qY",
@@ -15,8 +23,11 @@ var firebaseConfig = {
       appId: "1:610704435607:web:368119793451f3c8b33cd2",
       measurementId: "G-FWPCPMYH6J"
       };
+firebase.initializeApp(firebaseConfig);
+
 
 export class EmailInput extends Component {
+
   static navigationOptions = {
     headerShown: false,
   };
@@ -25,6 +36,7 @@ export class EmailInput extends Component {
     super(props)
 
     this.state = {
+      user_id: '',
       email: '',
       first_name: '',
       password: ''
@@ -37,20 +49,39 @@ export class EmailInput extends Component {
   _handlePress() {
     //this.setState({username:username})
     //this.setState({email: email})
-     Alert.alert("Username value: "+this.state.first_name);
-     Alert.alert("Email value: "+this.state.email);
+    
+    // .then(id => this.setState(user_id:id))
+    // .catch(error => console.error(error));
+    this.state.user_id = this.state.email.replace(/[^\w\s]/gi, '');
 
-     //firebase.initializeApp(firebaseConfig);
-     firebase.database().ref('users').set(
-                {
-                    name: this.state.first_name,
-                    email: this.state.email,
-                    password: this.state.password
-                }
-            )
+    //Alert.alert("Username value: "+this.state.first_name);
+    //Alert.alert("Email value: "+this.state.email);
+    //Alert.alert(uniqueId.uniqueId())
+
+    firebase.database().ref('users/'+this.state.user_id).once("value", snapshot => {
+      if (snapshot.exists()){
+        console.log("exists!");
+        Alert.alert('Email Already In Use!');
+        const email = snapshot.val();
+      }
+      else{
+        firebase.database().ref('users/'+this.state.user_id).set(
+          {
+          name: this.state.first_name,
+          email: this.state.email,
+          password: this.state.password
+          }
+        )
+        this.props.navigation.navigate('PasswordInput');
+
+      }
+
+    });
+
+    
      //Add the user to our database here
 
-     this.props.navigation.navigate('PasswordInput');
+     
   }
 
   render() {

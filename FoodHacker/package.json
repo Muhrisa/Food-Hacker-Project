@@ -17,6 +17,7 @@
     "firebase": "^7.9.3",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
+    "react-id-generator": "^3.0.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
     "react-native-color": "^0.0.10",
     "react-native-elements": "^1.2.7",
@@ -25,11 +26,13 @@
     "react-native-reanimated": "~1.4.0",
     "react-native-safe-area-context": "0.6.0",
     "react-native-screens": "2.0.0-alpha.12",
+    "react-native-unique-id": "^2.0.0",
     "react-native-web": "~0.11.7",
     "react-navigation": "^4.2.2",
     "react-navigation-drawer": "^2.4.2",
     "react-navigation-native": "^0.0.0",
-    "react-navigation-stack": "^2.2.3"
+    "react-navigation-stack": "^2.2.3",
+    "uuid": "^7.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

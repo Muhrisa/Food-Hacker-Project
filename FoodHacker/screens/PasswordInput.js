@@ -31,7 +31,7 @@ export class PasswordInput extends Component {
               type="ionicon"
               color={'#32a8a8'}
             />
-            <Text h4 style={{textAlign: 'center'}}>Enter Password:</Text>
+            <Text h4 style={{textAlign: 'center'}}>Continuing Page:</Text>
           </View>
           <Input
             leftIcon={
