@@ -1,9 +1,18 @@
-import React, { Component } from "react";
-import Navigator from "./components/Navigator";
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { Text, View } from 'react-native';
+import AppContainer from './src/navigations/AppNavigation';
+import HomeScreen from './src/screens/Home/HomeScreen';
+import CategoriesScreen from './src/screens/Categories/CategoriesScreen';
+import {
+  DrawerNavigator,
+  StackNavigator,
+  createStackNavigator,
+  createAppContainer
+} from 'react-navigation';
+import SplashScreen from './src/screens/Splash/SplashScreen';
 import firebase from "firebase";
 
-class App extends Component {
+class FoodHacker extends React.Component {
  	componentDidMount(){
   		var firebaseConfig = {
     	apiKey: "AIzaSyBvf0SfC3QmJoykCpuQVRk2jDshqn3B3qY",
@@ -19,10 +28,10 @@ class App extends Component {
     	firebase.initializeApp(firebaseConfig);
     	//firebase.analytics();
   		
-    }	
-  	render() {
-    	return <Navigator />;
   	}
+  render() {
+    return <AppContainer />;
+  }
 }
-export default App;
 
+export default FoodHacker;
