@@ -20,14 +20,14 @@ export default class SearchScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
     return {
-      headerRight: () => (
+      headerRight: (
         <MenuImage
           onPress={() => {
             navigation.openDrawer();
           }}
         />
       ),
-      headerTitle: () => (
+      headerTitle: (
         <SearchBar
           containerStyle={{
             backgroundColor: 'transparent',
@@ -118,7 +118,7 @@ export default class SearchScreen extends React.Component {
           numColumns={2}
           data={this.state.data}
           renderItem={this.renderRecipes}
-          keyExtractor={item => `${item.recipeId}`}
+          keyExtractor={item => '${item.recipeId}'}
         />
       </View>
     );

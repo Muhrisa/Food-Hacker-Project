@@ -7,7 +7,7 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import WelcomeScreen from '../screens/Login/WelcomeScreen';
 import LoginScreen from '../screens/Login/LoginScreen';
 import RegisterScreen from '../screens/Login/RegisterScreen';
-import PasswordInput from '../screens/Login/PasswordInput';
+import SurveyScreen from '../screens/Login/SurveyScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
 import CategoriesScreen from '../screens/Categories/CategoriesScreen';
 import RecipeScreen from '../screens/Recipe/RecipeScreen';
@@ -22,7 +22,7 @@ const MainNavigator = createStackNavigator(
     Welcome: WelcomeScreen,
     Login: LoginScreen,
     Register: RegisterScreen,
-    PasswordInput: PasswordInput,
+    Survey: SurveyScreen,
     Home: HomeScreen,
     Categories: CategoriesScreen,
     Recipe: RecipeScreen,
