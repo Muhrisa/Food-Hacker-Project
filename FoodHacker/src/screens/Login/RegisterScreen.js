@@ -44,7 +44,7 @@ export class RegisterScreen extends Component {
           password: this.state.password
           }
         )
-        this.props.navigation.navigate('PasswordInput');
+        this.props.navigation.navigate('Survey');
 
       }
 
