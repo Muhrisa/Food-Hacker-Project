@@ -18,16 +18,18 @@ import {
 
 export default class SearchScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
-    const { params = {} } = navigation.state;
+    //const { params = {} } = navigation.state;
+    const params = navigation.state.params;
+    //console.log(params.data());
     return {
-      headerRight: () => (
+      headerRight: (
         <MenuImage
           onPress={() => {
             navigation.openDrawer();
           }}
         />
       ),
-      headerTitle: () => (
+      headerTitle: (
         <SearchBar
           containerStyle={{
             backgroundColor: 'transparent',
@@ -47,6 +49,7 @@ export default class SearchScreen extends React.Component {
           clearIcon
           //lightTheme
           round
+          //onChangeText={"YEAHHHHH"}
           onChangeText={text => params.handleSearch(text)}
           //onClear={() => params.handleSearch('')}
           placeholder="Search"
@@ -118,7 +121,7 @@ export default class SearchScreen extends React.Component {
           numColumns={2}
           data={this.state.data}
           renderItem={this.renderRecipes}
-          keyExtractor={item => `${item.recipeId}`}
+          keyExtractor={item => '${item.recipeId}'}
         />
       </View>
     );
