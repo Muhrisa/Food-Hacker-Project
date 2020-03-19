@@ -18,7 +18,9 @@ import {
 
 export default class SearchScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
-    const { params = {} } = navigation.state;
+    //const { params = {} } = navigation.state;
+    const params = navigation.state.params;
+    //console.log(params.data());
     return {
       headerRight: (
         <MenuImage
@@ -47,6 +49,7 @@ export default class SearchScreen extends React.Component {
           clearIcon
           //lightTheme
           round
+          //onChangeText={"YEAHHHHH"}
           onChangeText={text => params.handleSearch(text)}
           //onClear={() => params.handleSearch('')}
           placeholder="Search"
